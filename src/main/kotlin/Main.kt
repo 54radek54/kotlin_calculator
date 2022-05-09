@@ -13,12 +13,14 @@ import androidx.compose.ui.window.application
 
 fun main() = application {
     val calculationValue = remember { mutableStateOf(TextFieldValue("")) }
+    val expressionValue = remember { mutableStateOf(TextFieldValue("")) }
     Window(onCloseRequest = ::exitApplication,
         title = "Kotlin calculator",
         resizable = false,
         state = WindowState(size = DpSize.Unspecified)){
         MaterialTheme {
-            Column(Modifier.size(320.dp, 305.dp)) {
+            Column(Modifier.size(320.dp, 325.dp)) {
+                expression(Modifier.weight(1f), expressionValue)
                 result(Modifier.weight(1f), calculationValue)
                 buttons(Modifier.weight(5f), calculationValue)
             }

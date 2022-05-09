@@ -18,7 +18,6 @@ repositories {
 
 dependencies {
     implementation(compose.desktop.currentOs)
-    implementation("org.mariuszgromada.math:MathParser.org-mXparser:4.0.0")
 }
 
 tasks.withType<KotlinCompile>() {
