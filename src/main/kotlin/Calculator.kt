@@ -10,11 +10,12 @@ import kotlin.math.sqrt
 val CHECK = arrayOf("+", "-", "x", "÷", ".", "^")
 
 fun calculate(input: String): String? {
-    val expressionToCalculate = input.replace('x', '*').replace('÷', '/').replace('.', ',')
+
     if((CHECK.any { input.endsWith(it) })){
         return null
     }
     return try {
+        val expressionToCalculate = input.replace('x', '*').replace('÷', '/').replace('.', ',')
         val calculation = Calculation()
         BigDecimal(calculation.evaluate(expressionToCalculate))
             .round(MathContext(3, RoundingMode.HALF_UP))
