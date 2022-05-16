@@ -22,7 +22,7 @@ fun main() = application {
             Column(Modifier.size(320.dp, 325.dp)) {
                 expression(Modifier.weight(1f), expressionValue)
                 result(Modifier.weight(1f), calculationValue)
-                buttons(Modifier.weight(5f), calculationValue)
+                buttons(Modifier.weight(5f), calculationValue,expressionValue)
             }
         }
     }

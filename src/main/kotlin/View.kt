@@ -41,13 +41,13 @@ fun result(modifier: Modifier,calculationValue:MutableState<TextFieldValue>){
 }
 
 @Composable
-fun buttons(modifier: Modifier,calculationValue:MutableState<TextFieldValue>){
+fun buttons(modifier: Modifier,calculationValue:MutableState<TextFieldValue>,expressionValue: MutableState<TextFieldValue>){
     Column(modifier = modifier.fillMaxSize().background(color = Color.Gray)) {
         Row{
             simpleButtonView("(", calculationValue)
             simpleButtonView(")", calculationValue)
-            Button(onClick= { sinValue(calculationValue) }){ Text("sin")}
-            Button(onClick= { clear(calculationValue) }){ Text("C")}
+            Button(onClick= { sinValue(calculationValue,expressionValue) }){ Text("sin")}
+            Button(onClick= { clear(calculationValue,expressionValue) }){ Text("C")}
             Button(onClick= { backspace(calculationValue) }){ Text("<-")}
         }
         Row{
@@ -55,7 +55,7 @@ fun buttons(modifier: Modifier,calculationValue:MutableState<TextFieldValue>){
             simpleButtonView( "8", calculationValue)
             simpleButtonView( "9", calculationValue)
             simpleButtonView( "x", calculationValue)
-            Button(onClick= { root(calculationValue) }){ Text("sqrt")}
+            Button(onClick= { root(calculationValue,expressionValue) }){ Text("sqrt")}
         }
         Row{
             simpleButtonView( "4", calculationValue)
@@ -69,14 +69,14 @@ fun buttons(modifier: Modifier,calculationValue:MutableState<TextFieldValue>){
             simpleButtonView( "2", calculationValue)
             simpleButtonView( "3", calculationValue)
             simpleButtonView( "+", calculationValue)
-            Button(onClick= { inverse(calculationValue) }){ Text("1/x")}
+            Button(onClick= { inverse(calculationValue,expressionValue) }){ Text("1/x")}
         }
         Row{
             simpleButtonView( "0", calculationValue)
             Button(onClick= { signChange(calculationValue) }){ Text("+/-")}
             simpleButtonView( ".", calculationValue)
             simpleButtonView( "-", calculationValue)
-            Button(onClick= { equal(calculationValue) }){ Text("=")}
+            Button(onClick= { equal(calculationValue, expressionValue) }){ Text("=")}
         }
     }
 }
