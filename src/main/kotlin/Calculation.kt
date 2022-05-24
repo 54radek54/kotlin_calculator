@@ -21,7 +21,7 @@ object MissingBracketException : CalcException("Missing bracket")
 object EndOfExpressionException : CalcException("End of expression")
 object NotANumberException : CalcException("Token is not a number")
 object UnknownTokenException : CalcException("Token unknown")
-object DivisionByZeroException : CalcException("Division by zero is not possible")
+object DivisionByZeroException : CalcException("Division by zero")
 
 class Calculation {
     private var i = 0
