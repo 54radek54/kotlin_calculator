@@ -81,12 +81,15 @@ fun backspace(calculationValue: MutableState<TextFieldValue>) {
 }
 
 fun sinValue(calculationValue: MutableState<TextFieldValue>, expressionValue: MutableState<TextFieldValue>) {
+    val openBrackets = calculationValue.value.text.count { it == '(' }
+    val closingBrackets = calculationValue.value.text.count { it == ')' }
+    if (openBrackets == closingBrackets) {
     if (calculate(calculationValue.value.text) != null) {
         sin(calculate(calculationValue.value.text)!!.toDouble()).let { value ->
             expressionValue.value = TextFieldValue("sin(".plus(calculationValue.value.text).plus(")"))
             calculationValue.value = TextFieldValue(value.toString())
         }
-    }
+    }}
 }
 
 fun power(calculationValue: MutableState<TextFieldValue>) {
@@ -102,6 +105,9 @@ fun power(calculationValue: MutableState<TextFieldValue>) {
 
 fun root(calculationValue: MutableState<TextFieldValue>, expressionValue: MutableState<TextFieldValue>) {
     val input = calculationValue.value.text
+    val openBrackets = calculationValue.value.text.count { it == '(' }
+    val closingBrackets = calculationValue.value.text.count { it == ')' }
+    if (openBrackets == closingBrackets) {
     if (input != "Missing bracket" && input != "Wrong expression!" && input != "End of expression" && input != "Token is not a number" && input != "Token unknown" && input != "Division by zero") {
         if (calculate(calculationValue.value.text) != null) {
             sqrt(calculate(calculationValue.value.text)!!.toDouble()).let { value ->
@@ -109,11 +115,14 @@ fun root(calculationValue: MutableState<TextFieldValue>, expressionValue: Mutabl
                 calculationValue.value = TextFieldValue(value.toString())
             }
         }
-    }
+    }}
 }
 
 fun inverse(calculationValue: MutableState<TextFieldValue>, expressionValue: MutableState<TextFieldValue>) {
     val input = calculationValue.value.text
+    val openBrackets = calculationValue.value.text.count { it == '(' }
+    val closingBrackets = calculationValue.value.text.count { it == ')' }
+    if (openBrackets == closingBrackets) {
     if (input != "Missing bracket" && input != "Wrong expression!" && input != "End of expression" && input != "Token is not a number" && input != "Token unknown" && input != "Division by zero") {
         if (calculate(calculationValue.value.text) != null) {
             (1 / calculate(calculationValue.value.text)!!.toDouble()).let { value ->
@@ -121,7 +130,7 @@ fun inverse(calculationValue: MutableState<TextFieldValue>, expressionValue: Mut
                 calculationValue.value = TextFieldValue(value.toString())
             }
         }
-    }
+    }}
 }
 
 fun signChange(calculationValue: MutableState<TextFieldValue>) {
